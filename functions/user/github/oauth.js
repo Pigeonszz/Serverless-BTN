@@ -1,4 +1,4 @@
-import { initDatabase, insertOAuthHash } from '/functions/d1.js';
+import { initDatabase, insertOAuthHash } from '../../d1.js';
 
 export async function onRequestGet({ request, env }) {
   const { searchParams } = new URL(request.url);

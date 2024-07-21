@@ -1,7 +1,7 @@
 // functions/ping/submitBans.js
 
 import { onRequest } from './auth.js';
-import { initDatabase, insertBans } from "/functions/d1.js";
+import { initDatabase, insertBans } from "../d1.js";
 
 export async function onRequestPost({ request, env }) {
   // 应用中间件
