@@ -53,6 +53,14 @@ export async function initDatabase(env) {
       ban_unique_id TEXT NOT NULL
     )
   `);
+
+  // 检查并创建OAuth表
+  await env.D1.exec(`
+    CREATE TABLE IF NOT EXISTS OAuth (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      hash TEXT NOT NULL
+    )
+  `);
 }
 
 export async function getAuthentication(env, appId, appSecret) {
@@ -96,4 +104,8 @@ export async function insertBans(env, bans) {
       ban.uploaded, ban.rt_upload_speed, ban.peer_progress, ban.downloader_progress, ban.peer_flag, ban.ban_unique_id
     ).run();
   }
+}
+
+export async function insertOAuthHash(env, hash) {
+  await env.D1.prepare(`INSERT INTO OAuth (hash) VALUES (?)`).bind(hash).run();
 }

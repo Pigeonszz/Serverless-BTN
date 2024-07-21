@@ -1,4 +1,4 @@
-// functions/ping/_middleware.js
+// functions/ping/auth.js
 
 import { initDatabase, getAuthentication } from "../d1.js";
 
